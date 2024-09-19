@@ -1,0 +1,99 @@
+.delivery-time{
+    text-align: center;
+    display: contents;
+    font-weight: bold;
+}
+
+.radio-box{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    align-content: center;
+    gap: 1%;
+    text-align: center;
+    background: #6b728014;
+    border-radius: 10px;
+    margin: 21px 0px;
+    padding: 10px;
+    border: 1px solid #7171cd;
+}
+
+.delivery-icon{
+    filter: invert(32%) sepia(100%) saturate(700%) hue-rotate(180deg) brightness(85%) contrast(85%);
+}
+.box{
+    margin: 21px
+}
+.pay-options{
+    display: flex;
+    flex-direction: row;
+    gap:1%;
+    padding:10px;
+    align-items: center;
+}
+
+.pay-info{
+    margin: 21px 0px;
+}
+
+.shipping-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-box input{
+    width: 50%;
+}
+.shipping{
+    font-weight:bold;
+    margin-left:2px;
+    margin-bottom:5px;
+}
+
+.card-group{
+    display: flex;
+    flex-direction: column;
+    margin-top:21px;
+}
+.card-group input{
+    width:30%;
+    margin-top:10px;
+}
+label{
+    font-weight:bold;
+}
+
+.card-exp-cvv{
+    display: flex;
+    flex-direction: row;
+    margin-top:21px;
+    gap:2%;
+}
+
+.card-exp input,.card-cvv input{
+    width:100%;
+}
+
+.card-exp,.card-cvv{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-btns{
+    display: flex;
+    flex-direction: row;
+    gap:2%;
+    margin-top:21px;
+}
+.confirm-btn{
+    background-color: #7171cd !important;
+    border-radius: 10px !important;
+    border:1px solid white;
+}
+.back-btn{
+    background-color: white !important;
+    border:1px solid grey;
+    border-radius: 10px;
+    color:black;
+}

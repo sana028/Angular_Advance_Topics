@@ -1,0 +1,88 @@
+.pay_place{
+    /* display: contents; */
+    margin:10px;
+}
+.mb-3 {
+    margin-bottom: 1rem;
+  }
+  /* checkout.component.css */
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .cart {
+    width: 45%;
+  }
+  
+  .address-form {
+    width: 45%;
+ 
+  }
+
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    margin:10px;
+  }
+
+  .form-group-add{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin:10px;
+  }
+/*   
+  .address-form{
+    background-color: rgba(192, 185, 185, 0.541);
+    border-radius: 10px;
+    margin:10px
+  } */
+
+  .order{
+    background-color: rgba(139, 226, 139, 0.5);
+    border-radius: 10px;
+  }
+
+  .total {
+    width: 100%;
+    max-width: 500px; /* Adjust width as per requirement */
+    margin: 0 auto;
+}
+
+.total-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.total-item h3, .total-item h2 {
+    margin: 0;
+}
+
+.order-total h2 {
+    font-size: 1.5em;
+}
+
+.order-total{
+    background: #00800073;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.total-item span {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+}

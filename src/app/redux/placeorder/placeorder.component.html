@@ -1,0 +1,123 @@
+<div class="box">
+  <div class="flex justify-content-center gap-2">
+    <p-toast></p-toast>
+    <p-confirmDialog>
+      <ng-template pTemplate="message" let-message>
+        <div
+          class="flex flex-column align-items-center w-full gap-1 border-bottom-1 surface-border"
+        >
+          <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
+          <p>{{ message.message }}</p>
+        </div>
+      </ng-template>
+    </p-confirmDialog>
+  </div>
+  <div calss="box-type">
+    <div class="radio-box">
+      <p-radioButton
+        name="order"
+        value="true"
+        [(ngModel)]="selectedOrder"
+      ></p-radioButton>
+      <img src="assets/delivery.png" class="delivery-icon" />
+      <p class="delivery-time">Get it delivered by with 2 or 3 days</p>
+    </div>
+    <div class="radio-box">
+      <p-radioButton
+        name="order"
+        value="order"
+        [(ngModel)]="selectedOrder"
+      ></p-radioButton>
+      <i
+        class="pi pi-shopping-bag"
+        style="font-size: 1.5rem; color: #7171cd"
+      ></i>
+      <p class="delivery-time">Pickup in avilable stores near by you</p>
+    </div>
+  </div>
+  <div class="shipping-box">
+    <label class="shipping">Shipping Address</label>
+    <input pInputText type="text" [(ngModel)]="shippingAddress" />
+  </div>
+  <div>
+    <div class="pay-info">
+      <h4>Payment information</h4>
+      <div class="pay-options">
+        <img
+          src="assets/shopping.png"
+          style="width: 60px; height: 60px; cursor: pointer;"
+          (click)="payMentMethod('debit card')"
+        />
+        <img
+          src="assets/logo.png"
+          style="width: 50px; height: 45px; cursor: pointer;"
+          (click)="payMentMethod('pay pal')"
+        />
+        <img
+          src="assets/credit-card.png"
+          style="width: 58px; height: 57px;cursor: pointer;"
+          (click)="payMentMethod('credit card')"
+        />
+      </div>
+    </div>
+    <div class="form">
+      <form [formGroup]="form" action="#" method="POST">
+        <div class="card-name card-group">
+          <label>Name on the card</label>
+          <input pInputText type="text" formControlName="name" />
+          <div class="text-danger" *ngIf="name?.errors?.['required']">
+            name is required.
+          </div>
+        </div>
+        <div class="card-num card-group">
+          <label>Card number</label>
+          <input pInputText type="number" formControlName="cardNum" />
+          <div class="text-danger" *ngIf="cardNum?.errors?.['required']">
+            card number is required.
+          </div>
+          <div *ngIf="cardNum?.invalid" class="text-danger">
+            Enter valid card number
+          </div>
+        </div>
+        <div class="card-exp-cvv">
+          <div class="card-exp">
+            <label>Expiration</label>
+            <input
+              pInputText
+              type="date"
+              placeholder="MM/YY"
+              formControlName="expDate"
+            />
+            <div class="ttext-danger" *ngIf="expDate?.errors?.['required']">
+              Expiration date is required.
+            </div>
+            <div *ngIf="expDate?.invalid" class="text-danger">
+              Enter valid card date
+            </div>
+          </div>
+          <div class="card-cvv">
+            <label>CVV</label>
+            <input pInputText type="number" formControlName="cvv" />
+            <div class="text-danger" *ngIf="cvv?.errors?.['required']">
+              CVV is required.
+            </div>
+            <div *ngIf="cvv?.invalid" class="text-danger">Enter valid CVV</div>
+          </div>
+        </div>
+        <div class="form-btns">
+          <button
+            pButton
+            label="Back"
+            icon="pi pi-angle-left"
+            severity="secondary"
+            class="back-btn"
+            (click)="navigateToPreviousPage()"
+          ></button>
+          <button pButton class="confirm-btn" (click)="confirmThePayment()">
+            Confirm payment {{ orderTotal | currency }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

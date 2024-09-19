@@ -1,0 +1,38 @@
+<div class="cart-items">
+    <div class="cart-amount" *ngIf="!isPayPageVisible">
+      <h3 class="total-amt">Total : <span class="amount">{{totalAmount | currency}}</span></h3>
+      <h4 class="total-items">Your Cart Items : <span class="items"> {{totalItems}} </span></h4>
+    </div>
+    <p-card styleClass="product-card" *ngIf="cartProducts.length">
+    <div class="cart-products">
+       <div *ngFor="let cartProduct of cartProducts">
+                <div class="p-grid p-nogutter footer">
+                  <div class="p-col-4">
+                    <img [src]="cartProduct.imageUrl" [alt]="cartProduct.title" width="150" class="product-image"/>
+                  </div>
+                  <div class="p-col-8 p-d-flex p-flex-column p-jc-between ">
+                    <div>
+                      <h3 class="p-mb-1">{{cartProduct.title}}</h3>
+                      <h4 class="p-mb-1">Price: {{cartProduct.price | currency}}</h4>
+                      <p class="quan-details">In stock</p>
+                    </div>
+                    <div class="p-mt-2  product-qun">
+                      <div  class="product-qun product-btn">
+                        <p-button icon="pi pi-minus" (onClick)="removeTheProduct(cartProduct.Id)" *ngIf="cartProduct.counter>1"></p-button>
+                        <p-button icon="pi pi-trash" (onClick)="deleteTheProduct(cartProduct.Id)"*ngIf="cartProduct.counter<=1"></p-button>
+                        <p>{{cartProduct.counter}}</p>
+                        <p-button  icon="pi pi-plus" (onClick)="addTheProduct(cartProduct)"></p-button>
+                      </div>
+                      <div>
+                        <p-button label="Delete" icon="" severity="secondary" (onClick)="deleteTheProduct(cartProduct.Id)" *ngIf="!isPayPageVisible"></p-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+        </div>
+        <p-button label="continue"  severity="warning" class="continue-btn" (onClick)="navigateToCheckOut()" *ngIf="!isPayPageVisible"></p-button>
+    </div>
+    <ng-content total></ng-content>
+</p-card>
+</div>

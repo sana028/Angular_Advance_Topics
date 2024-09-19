@@ -1,0 +1,23 @@
+
+import express from 'express';
+
+const router= express.Router();
+
+
+router.post('/placeOrder',async(req,res)=>{
+    const {paymentAmount,paymentMethod,country} = req.body;
+        console.log(req.body);
+    if(paymentAmount %2 ==0 && paymentMethod == 'credit card'){
+        res.status(200).json({message:'Order placed successfully',
+            paymentStatus:'Success',
+            paymentData:'#order12398r47yr',
+        })
+    }
+    else{
+        res.status(400).json({message:'Invalid payment details',
+            paymentStatus:'Failed',
+            error:"Your payment need more time to take confirmation from your bank"});
+    }
+})
+
+export default router;

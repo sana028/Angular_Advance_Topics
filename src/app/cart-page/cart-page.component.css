@@ -1,0 +1,71 @@
+.footer{
+    display: flex;
+    gap:3%;
+    margin-top:10px;
+}
+.product-card {
+    height: 100%;
+  }
+  
+  .p-card .p-card-content {
+    border: 1px solid grey;
+    /* border-radius: 10px; */
+    padding: 20px;
+    box-shadow: none;
+  }
+  
+ .product-btn{
+    /* margin: 25px; */
+    margin-right: 10px;
+ }
+
+ .product-qun{
+  display: flex;
+  align-items: center;
+ }
+
+ p{
+  margin: 10px;
+ }
+  
+  p-card {
+    display: block;
+    height: 100%;
+  }
+
+  .quan-details{
+    color:green;
+  }
+
+  .total-amt{
+    font-size: x-large;
+    /* text-align: center; */
+    margin:10px;
+  }
+  .total-items{
+    font-size: larger;
+    /* text-align: center; */
+    margin:10px;
+    
+  }
+
+  .amount,.items{
+    font-weight: bold;
+  }
+
+  .cart-items{
+    /* display: flex; */
+    justify-content: center;
+  }
+
+ .p-card{
+  box-shadow:none !important;
+  border-radius: 0 !important;
+ }
+
+ .continue-btn{
+  display: flex;
+  justify-content: center;
+  margin:35px;
+
+ }

@@ -1,0 +1,32 @@
+.footer{
+    display: flex;
+    gap:3%;
+    margin-top:10px;
+}
+.product-card {
+    height: 100%;
+  }
+  
+  .p-card .p-card-content {
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+ .product-btn{
+    margin: 25px;
+    margin-left: 0px;
+ }
+
+ .product-qun{
+  display: flex;
+ }
+
+ p{
+  margin: 10px;
+ }
+  
+  p-card {
+    display: block;
+    height: 100%;
+  }
