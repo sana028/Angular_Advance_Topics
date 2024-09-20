@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
@@ -25,25 +25,13 @@ import { CartService } from '../../services/cart/cart.service';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   products: Products[] = products;
   counter: number = 0;
   @Input() isCartShowing :boolean =false;
   
   constructor(private cartService: CartService) {}
-  ngOnInit() {
-     this.cartService.cartItems$.subscribe((items)=>{
-      console.log(items);
-      if(items.length == 0){
-        this.products = this.products.map((item)=>{
-          return{
-            ...item,
-            counter:0
-          }
-        })
-      }
-     })
-  }
+
 
   addTheProduct(product: Products) {
     this.cartService.addTheProduct(product);

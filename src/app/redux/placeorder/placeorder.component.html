@@ -74,7 +74,7 @@
         </div>
         <div class="card-num card-group">
           <label>Card number</label>
-          <input pInputText type="number" formControlName="cardNum" />
+          <input pInputText type="text" formControlName="cardNum" />
           <div class="text-danger" *ngIf="cardNum?.errors?.['required']">
             card number is required.
           </div>
@@ -100,7 +100,7 @@
           </div>
           <div class="card-cvv">
             <label>CVV</label>
-            <input pInputText type="number" formControlName="cvv" />
+            <input pInputText type="text" formControlName="cvv" />
             <div class="text-danger" *ngIf="cvv?.errors?.['required']">
               CVV is required.
             </div>

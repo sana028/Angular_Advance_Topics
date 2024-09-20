@@ -1,7 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { _paymentState } from "./order.state";
 import { confirmPayment, paymentFailure, paymentSuccess } from "./order.actions";
-import { error } from "console";
 
 
 const placeTheOrderReducer = createReducer(

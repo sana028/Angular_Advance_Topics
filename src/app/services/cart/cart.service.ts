@@ -34,8 +34,6 @@ export class CartService {
   deleteTheProduct(productId:number){
     const index = this.cartItems.findIndex((item) => item.Id == productId);
     this.cartItems[index].counter = 0;
-    console.log(productId);
-
     this.cartItems = this.cartItems.filter((item)=>item.Id != productId);
     this.cartItemsSubject.next(this.cartItems);
     // console.log(this.cartItems)
@@ -52,16 +50,11 @@ export class CartService {
   }
 
   RefreshTheCart(){
-    this.cartItems = this.cartItems.map((item) => {
-      return {
-        ...item,  
-        counter: 0  
-      };
-    });
-    console.log(this.cartItems);
+    this.cartItems.forEach((item) => {
+      item.counter = 0;  
+  });
     this.cartItems = [];
 
     this.cartItemsSubject.next(this.cartItems);
-    console.log(this.cartItems);
   }
 }
