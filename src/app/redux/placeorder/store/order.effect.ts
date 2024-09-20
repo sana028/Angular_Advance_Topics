@@ -22,7 +22,9 @@ export class PaymentEffect{
             mergeMap((action)=>{
                  return this.orderConfirmService.getPaymentUpdate(action).pipe(
                     map((response) => paymentSuccess({ paymentData: response.paymentData })),
-                    catchError((error) => of(paymentFailure({ error: error })))
+                    catchError((error) => 
+                         of(paymentFailure({ error: error.error.error }))  // Continue with your existing logic
+                      )
                 );
             })
 

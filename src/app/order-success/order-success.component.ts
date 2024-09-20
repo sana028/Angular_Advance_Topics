@@ -6,6 +6,7 @@ import { getPaymentData } from '../redux/placeorder/store/order.selector';
 import { Store } from '@ngrx/store';
 import { getOrderDetails } from '../checkoutpage/store/checkout.selectors';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-order-success',
@@ -21,9 +22,10 @@ export class OrderSuccessComponent implements OnInit, OnDestroy {
   orderSubscriber:any;
   nameSubscriber:any;
 
-  constructor(private store:Store, private router:Router){}
+  constructor(private store:Store, private router:Router, private cartService:CartService){}
 
   ngOnInit(): void {
+    this.cartService.RefreshTheCart();
     this.orderSubscriber = this.store.select(getPaymentData).subscribe(
       (data) => {
         this.orderId=data;

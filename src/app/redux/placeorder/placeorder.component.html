@@ -46,16 +46,19 @@
         <img
           src="assets/shopping.png"
           style="width: 60px; height: 60px; cursor: pointer;"
+          [ngClass]="{'active': paymentMethod === 'debit card'}"
           (click)="payMentMethod('debit card')"
         />
         <img
           src="assets/logo.png"
           style="width: 50px; height: 45px; cursor: pointer;"
+          [ngClass]="{'active': paymentMethod === 'pay pal'}"
           (click)="payMentMethod('pay pal')"
         />
         <img
           src="assets/credit-card.png"
           style="width: 58px; height: 57px;cursor: pointer;"
+          [ngClass]="{'active': paymentMethod === 'credit card'}"
           (click)="payMentMethod('credit card')"
         />
       </div>

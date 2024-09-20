@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-// import { PrimeNgModule } from '../../primeNg-Material/prime-ng-material.components';
 import {
   FormControl,
   FormGroup,
@@ -13,7 +12,11 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { confirmPayment } from './store/order.actions';
-import { getPaymentData, getPaymentStatus } from './store/order.selector';
+import {
+  getPaymentData,
+  getPaymentError,
+  getPaymentStatus,
+} from './store/order.selector';
 import { Router } from '@angular/router';
 import { PrimeNgModule } from '../../primeNg-Material/prime-ng-material.components';
 
@@ -85,13 +88,22 @@ export class PlaceorderComponent implements OnInit, OnDestroy {
       rejectButtonStyleClass: 'p-button-sm',
       acceptButtonStyleClass: 'p-button-outlined p-button-sm',
       accept: () => {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'Confirmed',
-          detail: 'You have accepted',
-          life: 3000,
-        });
-        this.payTheAmountOfOrders();
+        if (this.paymentMethod !== '') {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Confirmed',
+            detail: 'You have accepted',
+            life: 3000,
+          });
+          this.payTheAmountOfOrders();
+        } else {
+          this.messageService.add({
+            severity: 'warning',
+            summary: 'Error',
+            detail: 'Please select the payment method',
+            life: 5000,
+          });
+        }
       },
       reject: () => {
         this.messageService.add({
@@ -125,17 +137,19 @@ export class PlaceorderComponent implements OnInit, OnDestroy {
           if (this.paymentStatus) {
             this.router.navigateByUrl('order-success');
           } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: 'Payment failed',
-              life: 3000,
+            this.store.select(getPaymentError).subscribe((error) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: error,
+                life: 3000,
+              });
             });
           }
         });
     } else {
       this.messageService.add({
-        severity: 'error',
+        severity: 'warning',
         summary: 'Warning',
         detail: 'Please fill all the fields',
         life: 3000,

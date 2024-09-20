@@ -50,4 +50,18 @@ export class CartService {
     //   this.cartItemsSubject.next(this.cartItems);
     // }
   }
+
+  RefreshTheCart(){
+    this.cartItems = this.cartItems.map((item) => {
+      return {
+        ...item,  
+        counter: 0  
+      };
+    });
+    console.log(this.cartItems);
+    this.cartItems = [];
+
+    this.cartItemsSubject.next(this.cartItems);
+    console.log(this.cartItems);
+  }
 }

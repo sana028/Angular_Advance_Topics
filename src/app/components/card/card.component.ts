@@ -32,7 +32,17 @@ export class CardComponent implements OnInit {
   
   constructor(private cartService: CartService) {}
   ngOnInit() {
-    console.log(products);
+     this.cartService.cartItems$.subscribe((items)=>{
+      console.log(items);
+      if(items.length == 0){
+        this.products = this.products.map((item)=>{
+          return{
+            ...item,
+            counter:0
+          }
+        })
+      }
+     })
   }
 
   addTheProduct(product: Products) {
