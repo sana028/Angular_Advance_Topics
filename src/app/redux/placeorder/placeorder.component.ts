@@ -15,7 +15,6 @@ import { confirmPayment } from './store/order.actions';
 import {
   getPaymentData,
   getPaymentError,
-  getPaymentStatus,
 } from './store/order.selector';
 import { Router } from '@angular/router';
 import { PrimeNgModule } from '../../primeNg-Material/prime-ng-material.components';
@@ -129,10 +128,9 @@ export class PlaceorderComponent implements OnInit, OnDestroy {
           country: this.country,
         })
       );
-      const status = await this.store
+      this.store
         .select(getPaymentData)
         .subscribe((res) => {
-          console.log(res);
           this.paymentStatus = res;
           if (this.paymentStatus) {
             this.router.navigateByUrl('order-success');

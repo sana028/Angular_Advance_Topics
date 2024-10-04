@@ -1,0 +1,89 @@
+<div class="api-tables">
+  <div class="observable">
+    <h4>Observables</h4>
+    <div class="card">
+      <p-table
+        *ngIf="observableAPIData && observableAPIData.length > 0"
+        [value]="observableAPIData"
+        [paginator]="true"
+        [rows]="5"
+        [first]="first"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        (onPage)="pageChange($event)"
+        [rowsPerPageOptions]="[10, 25, 50]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let keys of observableAPIData[0] | keyvalue">
+              {{ keys.key }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+          <tr>
+            <td *ngFor="let item of rowData | keyvalue">{{ item.value }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+          <p-button
+            type="button"
+            icon="pi pi-plus"
+            styleClass="p-button-text"
+          />
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+          <p-button
+            type="button"
+            icon="pi pi-cloud"
+            styleClass="p-button-text"
+          />
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="promise">
+    <h4>Promises</h4>
+    <div class="card">
+      <p-table
+        [value]="PromiseAPIData"
+        [paginator]="true"
+        [rows]="5"
+        [first]="second"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        (onPage)="pageChangeForPromise($event)"
+        [rowsPerPageOptions]="[10, 25, 50]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let keys of PromiseAPIData[0] | keyvalue">
+              {{ keys.key }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+          <tr>
+            <td *ngFor="let item of rowData | keyvalue">{{ item.value }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+          <p-button
+            type="button"
+            icon="pi pi-plus"
+            styleClass="p-button-text"
+          />
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+          <p-button
+            type="button"
+            icon="pi pi-cloud"
+            styleClass="p-button-text"
+          />
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

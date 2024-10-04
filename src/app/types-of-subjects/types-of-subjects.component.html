@@ -1,0 +1,166 @@
+<div id="stocks">
+  <p-card header="Enter new stock details" class="form-card" styleClass="form-list">
+    <form
+      class="p-3 m-0 border-0 bd-example m-0 border-0"
+      class="form-size"
+      [formGroup]="form"
+    >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Stock ID</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter Stock ID"
+          formControlName="stockID"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Stock Name</label>
+        <input
+          type="text"
+          Placeholder="Enter Stock Name"
+          class="form-control"
+          formControlName="stockName"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Stock Price</label>
+        <input
+          type="number"
+          Placeholder="Enter Stock Price"
+          class="form-control"
+          formControlName="stockPrice"
+          required
+        />
+      </div>
+      <div class="mb-3 d-flex justify-content-center">
+        <button
+          pButton
+          label="New Stock"
+          severity="secondary"
+          (click)="addNewStock()"
+        ></button>
+      </div>
+    </form>
+  </p-card>
+  <div class="stocks-list">
+    <div class="future-stock">
+      <p-card
+        header="Expected next stock value"
+        subheader="Next Stock Value"
+        styleClass="next-stock"
+      >
+        <ng-template pTemplate="content">
+         <div class="expected-stock">
+          <h4>{{ futureStock | currency }}</h4>
+          @if(futureStock > 2000){
+          <div class="card-list">
+            <p>{{futureStockReturn}}</p>
+          </div>
+          }@else {
+          <div class="card-list-else">
+            <p>{{ futureStockReturn}} %</p>
+          </div>
+          }
+        </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div class="d-flex gap-3">
+            <button
+              pButton
+              label="Close today stock"
+              (click)="closeTheStock()"
+            ></button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+    <div class="latest-stock">
+      <p-card
+        header="New stock price"
+        subheader="Latest stock price"
+        styleClass="new-stock"
+      >
+        <ng-template pTemplate="content">
+          <div class="expected-stock" >
+            @if(totalStockPrice>0){
+          <h4>{{ totalStockPrice | currency}}</h4>
+          @if( lastestStockPrice > 0 ){
+            <div class="card-list">
+              <p>+ {{lastestStockPrice}} %</p>
+            </div>
+            }@else {
+            <div class="card-list-else" *ngIf="lastestStockPrice < 0">
+                <p> {{  lastestStockPrice}} %</p>
+            </div>
+            }
+          }@else {
+            <h5 class="card-list">The new stock is currently not available</h5>
+          }
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="d-flex gap-3">
+              <button
+                pButton
+                label="Sell the stock"
+                (click)="closeTheStock()"
+                *ngIf="totalStockPrice > 0"
+              ></button>
+            </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+  <div class="stocks-list-2">
+    <div class="today-all-stocks" *ngIf="totalStockPrice > 0">
+      <p-card
+        header="Today Stocks"
+        [subheader]="formattedDate"
+        styleClass="total-stocks"
+      >
+        <ng-template pTemplate="content">
+          <div *ngFor="let item of allStockValues" class="content">
+            <img
+              src="assets/stock-exchange.png"
+              alt="Stock"
+              width="60"
+              height="60"
+              class="stock-img"
+            />
+            <div class="headers">
+              <h4>{{ item.stockName }}</h4>
+              <h6>{{ item.stockID }}</h6>
+            </div>
+            <div class="stock-prices">
+              <h3>{{item.totalStockBalance | currency}}</h3>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+    <div class="end-stock" *ngIf="totalStockPrice > 0">
+      <p-card header="Last stock price for today" styleClass="last-stock" [subheader]="formattedDate">
+        <ng-template pTemplate="content">
+         
+          <div class="expected-stock">
+            <h3>{{ lastStockPriceForToday | currency }}</h3>
+            @if(lastReturn >= 0){
+            <div class="card-list">
+              <p>+ {{lastReturn}}%</p>
+            </div>
+            }@else {
+            <div class="card-list-else">
+              <p>{{lastReturn}} %</p>
+            </div>
+            }
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>

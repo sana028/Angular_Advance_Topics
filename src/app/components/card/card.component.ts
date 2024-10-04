@@ -28,10 +28,9 @@ import { CartService } from '../../services/cart/cart.service';
 export class CardComponent {
   products: Products[] = products;
   counter: number = 0;
-  @Input() isCartShowing :boolean =false;
-  
-  constructor(private cartService: CartService) {}
+  @Input() isCartShowing: boolean = false;
 
+  constructor(private cartService: CartService) {}
 
   addTheProduct(product: Products) {
     this.cartService.addTheProduct(product);

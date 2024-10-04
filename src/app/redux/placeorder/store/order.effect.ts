@@ -1,5 +1,4 @@
 import { inject, Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { createEffect,Actions,ofType } from "@ngrx/effects";
 import { confirmPayment, paymentFailure, paymentSuccess } from "./order.actions";
 import { catchError, map, mergeMap, of } from "rxjs";
@@ -14,7 +13,7 @@ export class PaymentEffect{
     
     private actions$ = inject(Actions);
 
-    constructor(private orderConfirmService:OrderConfirmService, private router:Router){}
+    constructor(private orderConfirmService:OrderConfirmService){}
 
     paymentStatus = createEffect(()=>
         this.actions$.pipe(

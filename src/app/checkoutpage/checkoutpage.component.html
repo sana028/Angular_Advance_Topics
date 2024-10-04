@@ -3,60 +3,84 @@
     <p-card>
       <app-cart-page [isPayPageVisible]="isPayPageVisible">
         <div class="total">
-            <p-divider type="solid" layout="horizontal"></p-divider>
-            <div class="total-item">
-                <h3>Total:</h3>
-                <span>{{totalItemsAmount |  currency}}</span>
-            </div>
-            <p-divider type="solid" layout="horizontal"></p-divider>
-        
-            <div class="total-item">
-                <h3>Delivery Fee:</h3>
-                <span>{{deliveryFee |  currency}}</span>
-            </div>
-            <p-divider type="solid" layout="horizontal"></p-divider>
-        
-            <div class="total-item order-total">
-                <h2>Order Total:</h2>
-                <span>{{orderTotal | currency}}</span>
-            </div>
+          <p-divider type="solid" layout="horizontal"></p-divider>
+          <div class="total-item">
+            <h3>Total:</h3>
+            <span>{{ totalItemsAmount | currency }}</span>
+          </div>
+          <p-divider type="solid" layout="horizontal"></p-divider>
+
+          <div class="total-item">
+            <h3>Delivery Fee:</h3>
+            <span>{{ deliveryFee | currency }}</span>
+          </div>
+          <p-divider type="solid" layout="horizontal"></p-divider>
+
+          <div class="total-item order-total">
+            <h2>Order Total:</h2>
+            <span>{{ orderTotal | currency }}</span>
+          </div>
         </div>
-        
       </app-cart-page>
     </p-card>
   </div>
   <div class="address-form">
     <p-card>
-    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="username" class="form-label">Username</label>
-        <input pInputText id="username" type="text" formControlName="username" />
-      </div>
-      <div class="form-group">
-        <label for="Address">Address</label>
-        <input pInputText id="Address" formControlName="address"  />
-      </div>
-      <div class="form-group">
-        <label for="City">City</label>
-        <input pInputText id="City" aria-describedby="City-help" formControlName="city"/>
-      </div>
-      <div class="form-group-add">
-        <div class="form-input">
-          <label for="Country">Country</label>
-          <input pInputText id="Country" aria-describedby="Country-help" formControlName="country"/>
+      <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <input
+            pInputText
+            id="username"
+            type="text"
+            formControlName="username"
+          />
         </div>
-        <div>
+        <div class="form-group">
+          <label for="Address">Address</label>
+          <input pInputText id="Address" formControlName="address" />
+        </div>
+        <div class="form-group">
+          <label for="City">City</label>
+          <input
+            pInputText
+            id="City"
+            aria-describedby="City-help"
+            formControlName="city"
+          />
+        </div>
+        <div class="form-group-add">
           <div class="form-input">
-            <label for="Zip">Zip Code</label>
-            <input pInputText id="Zip" aria-describedby="Zip-help" formControlName="zipCode" />
+            <label for="Country">Country</label>
+            <input
+              pInputText
+              id="Country"
+              aria-describedby="Country-help"
+              formControlName="country"
+            />
+          </div>
+          <div>
+            <div class="form-input">
+              <label for="Zip">Zip Code</label>
+              <input
+                pInputText
+                id="Zip"
+                aria-describedby="Zip-help"
+                formControlName="zipCode"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <p-button label="Pay and PlaceOrder" icon="pi pi-credit-card" class="btn" block (onClick)="onSubmit()"></p-button>
-      </div>
-    </form>
-</p-card>
+        <div class="form-group">
+          <p-button
+            label="Place Order"
+            icon="pi pi-credit-card"
+            class="btn"
+            block
+            (onClick)="onSubmit()"
+          ></p-button>
+        </div>
+      </form>
+    </p-card>
   </div>
 </div>
-

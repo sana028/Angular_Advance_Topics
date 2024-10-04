@@ -19,7 +19,6 @@ export const routes: Routes = [
       import('./checkoutpage/checkoutpage.component').then(
         (m) => m.CheckoutpageComponent
       ),
-
   },
   {
     path: 'place-order',
@@ -29,7 +28,24 @@ export const routes: Routes = [
       ),
   },
   {
-    path:'order-success',
-    loadComponent: () => import('./order-success/order-success.component').then((m)=>m.OrderSuccessComponent)
-  }
+    path: 'order-success',
+    loadComponent: () =>
+      import('./order-success/order-success.component').then(
+        (m) => m.OrderSuccessComponent
+      ),
+  },
+  {
+    path: 'stocks',
+    loadComponent: () =>
+      import('./types-of-subjects/types-of-subjects.component').then(
+        (m) => m.TypesOfSubjectsComponent
+      ),
+  },
+  {
+    path: 'observable-promise',
+    loadComponent: () =>
+      import('./observables-promise/observables-promise.component').then(
+        (m) => m.ObservablesPromiseComponent
+      ),
+  },
 ];

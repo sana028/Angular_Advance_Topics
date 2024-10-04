@@ -1,5 +1,6 @@
 
 import express from 'express';
+import { products } from './products.mjs';
 
 const router= express.Router();
 
@@ -20,4 +21,7 @@ router.post('/placeOrder',async(req,res)=>{
     }
 })
 
+router.get('/fetchTheData',async(req,res)=>{
+     res.status(200).send(products);
+})
 export default router;

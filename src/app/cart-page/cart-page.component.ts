@@ -30,7 +30,6 @@ export class CartPageComponent implements OnInit,OnChanges {
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe((items)=>{
- 
         this.cartProducts = items;
         this.totalAmount = items?.reduce((sum,product)=>sum+(product.price*product.counter),0);
         this.totalItems =  items?.reduce((sum,product)=>sum+product.counter,0);
